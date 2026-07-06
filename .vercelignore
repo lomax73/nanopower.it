@@ -1,0 +1,14 @@
+# Materiale sorgente di riferimento (schede tecniche, manuali produttore) —
+# non necessario al build, troppo grande da caricare (~1.7GB).
+Prodotti/
+
+# Logo sorgente (font, favicon set, file .ai) — solo gli asset usati dal sito
+# sono in public/ e app/fonts/, il resto e' materiale grezzo di lavorazione.
+Logo/
+
+# Documenti riservati riferimento fase
+domande_da_chiarire.md
+fase_*.md
+00_LEGGI_PRIMA.md
+
+.DS_Store
