@@ -48,3 +48,25 @@ in `Prodotti/i-Gloo ADDITIVI Superfluid/`:
 
 **Impatto**: queste correzioni riguardano anche contenuti già pubblicati in Fase 1
 (homepage) — vedi anche `fase_8_revisioni.md` punto 2 per il caso analogo λ IGK2.
+
+---
+
+## 2. Setup Supabase e primo utente admin (Fase 7 — Area Tecnici)
+
+La Fase 7 (area tecnici) è stata implementata ma non è ancora collegata a un
+progetto Supabase reale (nessun account creato durante lo sviluppo). Prima che
+la funzionalità sia utilizzabile in produzione:
+
+1. Creare un progetto su [supabase.com](https://supabase.com) (piano gratuito va bene).
+2. Eseguire lo script `supabase/schema.sql` nell'SQL Editor del progetto.
+3. Copiare **Project URL** e **service_role key** (non la `anon` key: tutte le
+   query dell'app passano dal server) in `.env.local`/variabili d'ambiente Vercel:
+   `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY`.
+4. **Nessun flusso crea automaticamente un admin**: ogni richiesta da
+   `/richiedi-accesso` crea un utente con `ruolo='tecnico'`. Per attivare il
+   primo amministratore, dopo la prima registrazione bisogna aggiornare
+   manualmente la riga nella tabella `tecnici` su Supabase:
+   `ruolo = 'admin'` e `approvato = true`.
+5. Impostare anche `NEXTAUTH_SECRET` (stringa random 32+ caratteri, es.
+   `openssl rand -base64 32`) e `NEXTAUTH_URL` (`https://nanopower.it` in
+   produzione) nelle variabili d'ambiente di Vercel.
