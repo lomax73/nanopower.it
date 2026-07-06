@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import { authOptions } from "@/lib/auth";
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase";
@@ -31,7 +31,10 @@ export async function GET(req: Request, { params }: { params: Promise<{ filename
   }
 
   const filePath = path.join(DOCS_DIR, filename);
-  if (!fs.existsSync(filePath)) {
+  let fileBuffer: Buffer;
+  try {
+    fileBuffer = await fs.readFile(filePath);
+  } catch {
     return NextResponse.json({ error: "Documento non trovato." }, { status: 404 });
   }
 
@@ -44,7 +47,6 @@ export async function GET(req: Request, { params }: { params: Promise<{ filename
     });
   }
 
-  const fileBuffer = fs.readFileSync(filePath);
   const ext = path.extname(filename).toLowerCase();
 
   return new NextResponse(new Uint8Array(fileBuffer), {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { INPUT_CLASS, LABEL_CLASS, SUBMIT_CLASS } from "@/lib/form-styles";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function LoginForm() {
 
         <form onSubmit={onSubmit} className="mt-8 flex flex-col gap-4">
           <div>
-            <label htmlFor="login-email" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+            <label htmlFor="login-email" className={LABEL_CLASS}>
               Email
             </label>
             <input
@@ -52,12 +53,12 @@ export default function LoginForm() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+              className={INPUT_CLASS}
             />
           </div>
 
           <div>
-            <label htmlFor="login-password" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+            <label htmlFor="login-password" className={LABEL_CLASS}>
               Password
             </label>
             <input
@@ -67,7 +68,7 @@ export default function LoginForm() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+              className={INPUT_CLASS}
             />
           </div>
 
@@ -76,7 +77,7 @@ export default function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="mt-2 flex w-full items-center justify-center gap-2 bg-nano-teal px-6 py-3.5 font-semibold text-nano-navy transition-opacity hover:opacity-90 disabled:opacity-60"
+            className={SUBMIT_CLASS}
           >
             {loading ? (
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-nano-navy/30 border-t-nano-navy" />

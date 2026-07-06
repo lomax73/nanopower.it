@@ -29,11 +29,18 @@ function readPostFile(filename: string): { meta: PostMeta; content: string } {
   };
 }
 
+// In build/produzione i post non cambiano dopo l'avvio: evita di rileggere e
+// riparsare tutti gli .mdx a ogni chiamata (lista, correlati, conteggi categorie).
+// In dev niente cache, per vedere subito le modifiche agli articoli.
+let postsCache: PostMeta[] | null = null;
+
 export function getAllPosts(): PostMeta[] {
+  if (postsCache && process.env.NODE_ENV !== "development") return postsCache;
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
-  return files
+  postsCache = files
     .map((f) => readPostFile(f).meta)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return postsCache;
 }
 
 export function getPostSlugs(): string[] {

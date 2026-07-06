@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { leadSchema, clienteOptions, prodottoOptions, type LeadFormValues } from "@/lib/lead-schema";
 import { submitLead } from "@/app/actions/lead";
+import { INPUT_CLASS, LABEL_CLASS, SELECT_CLASS, SUBMIT_CLASS } from "@/lib/form-styles";
+import FormSuccess from "@/components/FormSuccess";
 
 type Status = "idle" | "success" | "error";
 
@@ -36,13 +38,7 @@ export default function LeadForm() {
 
   if (status === "success") {
     return (
-      <div className="mx-auto flex w-full max-w-lg flex-col items-center gap-3 border border-nano-teal/40 bg-nano-teal/5 p-8 text-center">
-        <svg viewBox="0 0 24 24" className="h-10 w-10" fill="none" aria-hidden="true">
-          <circle cx="12" cy="12" r="11" stroke="#00A896" strokeWidth="1.5" />
-          <path d="M7 12.5 10.2 16 17 8" stroke="#00A896" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <p className="text-white">Grazie! Ti ricontatteremo al più presto per la tua consulenza.</p>
-      </div>
+      <FormSuccess message="Grazie! Ti ricontatteremo al più presto per la tua consulenza." />
     );
   }
 
@@ -57,54 +53,54 @@ export default function LeadForm() {
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="mt-6 flex flex-col gap-4">
         <div>
-          <label htmlFor="nome" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="nome" className={LABEL_CLASS}>
             Nome e Cognome
           </label>
           <input
             id="nome"
             type="text"
             autoComplete="name"
-            className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-nano-slate/60 focus:border-nano-teal focus:outline-none"
+            className={INPUT_CLASS}
             {...register("nome")}
           />
           {errors.nome && <p className="mt-1 text-xs text-red-400">{errors.nome.message}</p>}
         </div>
 
         <div>
-          <label htmlFor="email" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="email" className={LABEL_CLASS}>
             Email
           </label>
           <input
             id="email"
             type="email"
             autoComplete="email"
-            className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-nano-slate/60 focus:border-nano-teal focus:outline-none"
+            className={INPUT_CLASS}
             {...register("email")}
           />
           {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>}
         </div>
 
         <div>
-          <label htmlFor="telefono" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="telefono" className={LABEL_CLASS}>
             Telefono <span className="normal-case text-nano-slate/60">(opzionale)</span>
           </label>
           <input
             id="telefono"
             type="tel"
             autoComplete="tel"
-            className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-nano-slate/60 focus:border-nano-teal focus:outline-none"
+            className={INPUT_CLASS}
             {...register("telefono")}
           />
         </div>
 
         <div>
-          <label htmlFor="tipoCliente" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="tipoCliente" className={LABEL_CLASS}>
             Sei un
           </label>
           <select
             id="tipoCliente"
             defaultValue=""
-            className="w-full border border-white/15 bg-nano-navy px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+            className={SELECT_CLASS}
             {...register("tipoCliente")}
           >
             <option value="" disabled>
@@ -120,13 +116,13 @@ export default function LeadForm() {
         </div>
 
         <div>
-          <label htmlFor="prodottoInteresse" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="prodottoInteresse" className={LABEL_CLASS}>
             Prodotto di interesse
           </label>
           <select
             id="prodottoInteresse"
             defaultValue=""
-            className="w-full border border-white/15 bg-nano-navy px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+            className={SELECT_CLASS}
             {...register("prodottoInteresse")}
           >
             <option value="" disabled>
@@ -148,7 +144,7 @@ export default function LeadForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="mt-2 flex w-full items-center justify-center gap-2 bg-nano-teal px-6 py-3.5 font-semibold text-nano-navy transition-opacity hover:opacity-90 disabled:opacity-60"
+          className={SUBMIT_CLASS}
         >
           {isSubmitting ? (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-nano-navy/30 border-t-nano-navy" />

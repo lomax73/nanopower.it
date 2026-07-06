@@ -10,6 +10,8 @@ import {
   type RichiediAccessoValues,
 } from "@/lib/richiedi-accesso-schema";
 import { submitRichiediAccesso } from "@/app/actions/richiedi-accesso";
+import { INPUT_CLASS, LABEL_CLASS, SELECT_CLASS, SUBMIT_CLASS } from "@/lib/form-styles";
+import FormSuccess from "@/components/FormSuccess";
 
 type Status = "idle" | "success" | "error";
 
@@ -50,16 +52,11 @@ export default function RichiediAccessoForm() {
 
   if (status === "success") {
     return (
-      <div className="mx-auto flex w-full max-w-lg flex-col items-center gap-3 border border-nano-teal/40 bg-nano-teal/5 p-8 text-center">
-        <svg viewBox="0 0 24 24" className="h-10 w-10" fill="none" aria-hidden="true">
-          <circle cx="12" cy="12" r="11" stroke="#00A896" strokeWidth="1.5" />
-          <path d="M7 12.5 10.2 16 17 8" stroke="#00A896" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <p className="text-white">Richiesta inviata! Ti rispondo entro 24 ore.</p>
+      <FormSuccess message="Richiesta inviata! Ti rispondo entro 24 ore.">
         <p className="text-sm text-nano-slate">
           Una volta approvata la richiesta potrai accedere con l&apos;email e la password che hai scelto.
         </p>
-      </div>
+      </FormSuccess>
     );
   }
 
@@ -73,25 +70,25 @@ export default function RichiediAccessoForm() {
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="mt-8 flex flex-col gap-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="ra-nome" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+            <label htmlFor="ra-nome" className={LABEL_CLASS}>
               Nome
             </label>
             <input
               id="ra-nome"
               type="text"
-              className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+              className={INPUT_CLASS}
               {...register("nome")}
             />
             {errors.nome && <p className="mt-1 text-xs text-red-400">{errors.nome.message}</p>}
           </div>
           <div>
-            <label htmlFor="ra-cognome" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+            <label htmlFor="ra-cognome" className={LABEL_CLASS}>
               Cognome
             </label>
             <input
               id="ra-cognome"
               type="text"
-              className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+              className={INPUT_CLASS}
               {...register("cognome")}
             />
             {errors.cognome && <p className="mt-1 text-xs text-red-400">{errors.cognome.message}</p>}
@@ -99,39 +96,39 @@ export default function RichiediAccessoForm() {
         </div>
 
         <div>
-          <label htmlFor="ra-email" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="ra-email" className={LABEL_CLASS}>
             Email
           </label>
           <input
             id="ra-email"
             type="email"
             autoComplete="email"
-            className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+            className={INPUT_CLASS}
             {...register("email")}
           />
           {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>}
         </div>
 
         <div>
-          <label htmlFor="ra-azienda" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="ra-azienda" className={LABEL_CLASS}>
             Azienda / Studio <span className="normal-case text-nano-slate/60">(opzionale)</span>
           </label>
           <input
             id="ra-azienda"
             type="text"
-            className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+            className={INPUT_CLASS}
             {...register("azienda")}
           />
         </div>
 
         <div>
-          <label htmlFor="ra-tipo" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="ra-tipo" className={LABEL_CLASS}>
             Sei un
           </label>
           <select
             id="ra-tipo"
             defaultValue=""
-            className="w-full border border-white/15 bg-nano-navy px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+            className={SELECT_CLASS}
             {...register("tipoCliente")}
           >
             <option value="" disabled>
@@ -147,40 +144,40 @@ export default function RichiediAccessoForm() {
         </div>
 
         <div>
-          <label htmlFor="ra-telefono" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="ra-telefono" className={LABEL_CLASS}>
             Telefono <span className="normal-case text-nano-slate/60">(opzionale)</span>
           </label>
           <input
             id="ra-telefono"
             type="tel"
-            className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+            className={INPUT_CLASS}
             {...register("telefono")}
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="ra-password" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+            <label htmlFor="ra-password" className={LABEL_CLASS}>
               Password
             </label>
             <input
               id="ra-password"
               type="password"
               autoComplete="new-password"
-              className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+              className={INPUT_CLASS}
               {...register("password")}
             />
             {errors.password && <p className="mt-1 text-xs text-red-400">{errors.password.message}</p>}
           </div>
           <div>
-            <label htmlFor="ra-conferma" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+            <label htmlFor="ra-conferma" className={LABEL_CLASS}>
               Conferma password
             </label>
             <input
               id="ra-conferma"
               type="password"
               autoComplete="new-password"
-              className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+              className={INPUT_CLASS}
               {...register("confermaPassword")}
             />
             {errors.confermaPassword && (
@@ -190,13 +187,13 @@ export default function RichiediAccessoForm() {
         </div>
 
         <div>
-          <label htmlFor="ra-messaggio" className="mb-1 block text-xs nano-tracking-label uppercase text-nano-slate">
+          <label htmlFor="ra-messaggio" className={LABEL_CLASS}>
             Perché vuoi accedere all&apos;area tecnici? <span className="normal-case text-nano-slate/60">(opzionale)</span>
           </label>
           <textarea
             id="ra-messaggio"
             rows={3}
-            className="w-full border border-white/15 bg-white/5 px-4 py-3 text-white focus:border-nano-teal focus:outline-none"
+            className={INPUT_CLASS}
             {...register("messaggio")}
           />
         </div>
@@ -220,7 +217,7 @@ export default function RichiediAccessoForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="mt-2 flex w-full items-center justify-center gap-2 bg-nano-teal px-6 py-3.5 font-semibold text-nano-navy transition-opacity hover:opacity-90 disabled:opacity-60"
+          className={SUBMIT_CLASS}
         >
           {isSubmitting ? (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-nano-navy/30 border-t-nano-navy" />
