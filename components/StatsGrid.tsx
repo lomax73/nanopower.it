@@ -10,16 +10,16 @@ const STATS = [
     label: "La conducibilità termica più bassa sul mercato",
   },
   {
-    target: 20,
+    target: 12,
     decimals: 0,
     unit: "ore",
-    label: "Tempo di calpestabilità del massetto SuperFluid",
+    label: "Calpestabilità minima SuperFluid (variante 6-CORE)",
   },
   {
     target: 10,
     decimals: 0,
     unit: "anni",
-    label: "Garanzia assicurativa SuperFluid (€10.000.000)",
+    label: "Garanzia assicurativa SuperFluid (€5.000.000)",
   },
   {
     target: 2.8,

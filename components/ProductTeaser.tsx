@@ -27,11 +27,11 @@ const PRODUCTS = [
     key: "superfluid",
     href: "/superfluid",
     title: "SuperFluid",
-    tagline: "Massetto calpestabile in 20 ore",
+    tagline: "Massetto calpestabile in 12-24 ore",
     bullets: [
-      "Calpestabile in sole 20 ore dal getto",
+      "Calpestabile in 12-24 ore dal getto, a seconda della variante",
       "Unico in Italia con garanzia assicurativa decennale",
-      "Copertura fino a €10.000.000",
+      "Copertura fino a €5.000.000 per cantiere",
     ],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" aria-hidden="true">

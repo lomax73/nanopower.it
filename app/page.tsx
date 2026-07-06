@@ -82,11 +82,12 @@ export default function Home() {
             L&apos;unico massetto con garanzia decennale assicurativa in Italia
           </h2>
           <p className="mt-4 max-w-xl text-base text-nano-slate">
-            SuperFluid è l&apos;additivo che rende il massetto calpestabile in 20 ore, con una
-            protezione assicurativa che nessun altro prodotto sul mercato italiano offre.
+            SuperFluid è la gamma di additivi che rende il massetto calpestabile in 12-24 ore
+            a seconda della variante, con una protezione assicurativa che nessun altro prodotto
+            sul mercato italiano offre.
           </p>
           <p className="mt-8 font-mono text-4xl font-black text-nano-gold sm:text-5xl">
-            €10.000.000
+            €5.000.000
             <span className="ml-2 block text-sm font-medium text-nano-slate sm:inline sm:text-base">
               di copertura assicurativa
             </span>
