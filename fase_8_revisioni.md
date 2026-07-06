@@ -81,6 +81,52 @@ Su richiesta esplicita è stato mantenuto 0,0014 su tutto il sito (homepage + /i
 
 ---
 
-## 3. (da definire)
+## 3. Variabili d'ambiente mancanti su Vercel (produzione)
+
+### Contesto
+
+Il sito è stato deployato in produzione (https://nanopowerit.vercel.app,
+commit `e40fbff`) collegando GitHub → Vercel, ma le variabili d'ambiente
+sensibili esistono solo in `.env.local` (mai committato) e non sono ancora
+state impostate su Vercel. Il deploy funziona (build pulita, tutte le pagine
+rispondono 200), ma in produzione:
+
+- I form lead (homepage, IGK2, SuperElastiK, SuperFluid, newsletter blog)
+  mostrano "servizio momentaneamente non disponibile" perché manca
+  `BREVO_API_KEY`.
+- Il login/registrazione area tecnici non funziona perché mancano
+  `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY`.
+
+Questo è un comportamento controllato (stesso pattern usato ovunque nel
+progetto), non un errore — ma va risolto prima che il sito sia realmente
+operativo per la raccolta lead.
+
+### Cosa fare
+
+- Impostare su Vercel (Project Settings → Environment Variables), per
+  l'ambiente Production: `BREVO_API_KEY`, `BREVO_LIST_ID_GENERAL`,
+  `BREVO_LIST_ID_IGK2`, `BREVO_LIST_ID_SUPERELASTIK`,
+  `BREVO_LIST_ID_SUPERFLUID`, `BREVO_LIST_ID_NEWSLETTER`, `CONTACT_EMAIL`,
+  `NEXT_PUBLIC_WHATSAPP`.
+- Impostare `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXTAUTH_SECRET`,
+  `NEXTAUTH_URL=https://nanopower.it` (vedi anche `domande_da_chiarire.md`
+  punto 2 per il setup completo di Supabase e la creazione del primo admin).
+- Dopo aver aggiunto le variabili, rifare un deploy (`vercel --prod`) perché
+  Vercel non rilegge le env var di un deployment già completato.
+
+### Nota tecnica: `.vercelignore`
+
+Durante il primo tentativo di deploy, il CLI di Vercel ha provato a
+caricare 1.7GB perché **non rispetta `.gitignore`** per l'upload locale:
+stava includendo `Prodotti/` (materiale di riferimento, escluso da git ma
+non dal deploy). Risolto creando `.vercelignore` (esclude anche `Logo/` e
+i file `fase_*.md`/`domande_da_chiarire.md`/`00_LEGGI_PRIMA.md`, non
+necessari al build). Da tenere a mente se in futuro si aggiungono altre
+cartelle grandi non destinate al deploy: vanno escluse esplicitamente in
+`.vercelignore`, non basta il `.gitignore`.
+
+---
+
+## 4. (da definire)
 
 ---
