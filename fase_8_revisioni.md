@@ -1,11 +1,15 @@
-# FASE 8 — Revisione Logo
+# FASE 8 — Revisioni
 ## nanopower.it
 
-> **Stato:** da fare — appunto aperto durante la Fase 1, da riprendere in un secondo momento.
+> **Stato:** da fare — raccoglitore di punti da rivedere/rifinire in un secondo momento,
+> emersi durante lo sviluppo delle fasi precedenti. Non è una fase di sviluppo nuovo,
+> ma di revisione di scelte già fatte.
 
 ---
 
-## Contesto
+## 1. Logo
+
+### Contesto
 
 Durante la Fase 1 è stato integrato il logo storico nanopower (dagli asset in `Logo/`)
 in Navbar e Footer. Per arrivare a un risultato accettabile sono stati necessari diversi
@@ -24,7 +28,7 @@ tentativi:
    ottagonale bianco (CSS `clip-path: polygon(...)` in `Navbar.tsx` e `Footer.tsx`),
    per richiamare gli spigoli smussati del font del logo.
 
-## Cosa rivedere
+### Cosa rivedere
 
 - Verificare con il cliente/brand owner se l'ottagono bianco e le proporzioni
   attuali (icona quasi a riempire il contenitore) sono coerenti con le linee guida
@@ -39,10 +43,16 @@ tentativi:
 - `app/opengraph-image.tsx` usa ancora un rendering testuale generico (non il font
   NanoLow): valutare se allinearlo.
 
-## File coinvolti
+### File coinvolti
 
 - `components/Navbar.tsx`
 - `components/Footer.tsx`
 - `app/layout.tsx` (caricamento font `nanoLogo`)
 - `app/fonts/NanoLow.ttf`
 - `public/logo-icon.png`
+
+---
+
+## 2. (da definire)
+
+---
