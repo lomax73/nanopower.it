@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --nano-navy: #0d1f33;
+  --nano-navy-light: #1a2f4a;
+  --nano-teal: #00a896;
+  --nano-gold: #ffd166;
+  --nano-slate: #94a3b8;
+  --nano-white: #ffffff;
+}
+
+@theme inline {
+  --color-nano-navy: var(--nano-navy);
+  --color-nano-navy-light: var(--nano-navy-light);
+  --color-nano-teal: var(--nano-teal);
+  --color-nano-gold: var(--nano-gold);
+  --color-nano-slate: var(--nano-slate);
+  --color-nano-white: var(--nano-white);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--nano-navy);
+  color: var(--nano-white);
+}
+
+/* ---------- Fade-in stagger ---------- */
+@keyframes nano-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nano-reveal {
+  opacity: 0;
+  animation: nano-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.nano-reveal-1 { animation-delay: 0.05s; }
+.nano-reveal-2 { animation-delay: 0.18s; }
+.nano-reveal-3 { animation-delay: 0.31s; }
+.nano-reveal-4 { animation-delay: 0.44s; }
+.nano-reveal-5 { animation-delay: 0.57s; }
+.nano-reveal-6 { animation-delay: 0.7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nano-reveal {
+    animation: none;
+    opacity: 1;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Molecular lattice background ---------- */
+@keyframes nano-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-1.5%, 1%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes nano-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.9; }
+}
+
+.nano-lattice {
+  animation: nano-drift 40s ease-in-out infinite;
+}
+
+.nano-node {
+  animation: nano-pulse 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nano-lattice {
+    animation: none;
+  }
+  .nano-node {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+/* ---------- Utility ---------- */
+.nano-tracking-label {
+  letter-spacing: 0.18em;
+}

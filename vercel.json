@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "next build",
+  "env": {
+    "BREVO_API_KEY": "",
+    "BREVO_LIST_ID_GENERAL": "",
+    "CONTACT_EMAIL": "",
+    "NEXT_PUBLIC_WHATSAPP": ""
+  }
+}
