@@ -53,6 +53,34 @@ tentativi:
 
 ---
 
-## 2. (da definire)
+## 2. Dati tecnici IGK2 — verifica fonte λ
+
+### Contesto
+
+Durante la Fase 2 (pagine prodotto IGK2/SuperElastiK) è emerso che la scheda tecnica
+ufficiale del produttore (`Prodotti/IGK2/I-Glooklima_Scheda IGK2_2022_.pdf`) riporta
+λD = 0,0019 W/mk, mentre il sito (homepage Fase 1 e nuova pagina /igk2) usa 0,0014 W/mk.
+Nessuno dei documenti in `Prodotti/IGK2/` né il sito i-glooklima.it citano 0,0014.
+
+Su richiesta esplicita è stato mantenuto 0,0014 su tutto il sito (homepage + /igk2).
+
+### Cosa rivedere
+
+- Verificare la fonte del valore 0,0014 W/mk (scheda tecnica più recente non presente
+  nella cartella `Prodotti/`? Dato fornito verbalmente dal produttore?) e allineare la
+  documentazione interna.
+- Se 0,0014 non è confermabile, valutare l'aggiornamento a 0,0019 W/mk (valore
+  ufficiale 2022) su homepage e pagina /igk2.
+
+### File coinvolti
+
+- `app/page.tsx` (hero + stats)
+- `components/StatsGrid.tsx`
+- `components/ProductTeaser.tsx`
+- `app/igk2/page.tsx`
+
+---
+
+## 3. (da definire)
 
 ---

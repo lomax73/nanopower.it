@@ -28,6 +28,9 @@
 .DS_Store
 *.pem
 
+# materiale sorgente di riferimento (schede tecniche, manuali) - troppo grande per git
+/Prodotti/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
