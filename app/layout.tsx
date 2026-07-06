@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,6 +17,12 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+const nanoLogo = localFont({
+  src: "./fonts/NanoLow.ttf",
+  variable: "--font-nano-logo",
+  display: "swap",
 });
 
 const siteUrl = "https://nanopower.it";
@@ -40,6 +47,13 @@ export const metadata: Metadata = {
     description:
       "IGK2, SuperFluid e SuperElastiK: materiali edili ad alte prestazioni.",
   },
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -52,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="it" className={`${inter.variable} ${plexMono.variable} h-full`}>
+    <html lang="it" className={`${inter.variable} ${plexMono.variable} ${nanoLogo.variable} h-full`}>
       <body className="min-h-full bg-nano-navy font-sans antialiased">
         <GoogleAnalytics />
         <div className="relative flex min-h-full flex-col">

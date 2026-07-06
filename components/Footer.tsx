@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const PRODOTTI_SERVIZI = [
@@ -21,8 +22,14 @@ export default function Footer() {
     <footer className="border-t border-white/10">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
         <div className="flex flex-col gap-4">
-          <p className="font-mono text-xl font-black tracking-tight text-white">
-            nanopower<span className="text-nano-teal">.</span>
+          <p className="flex items-center gap-2.5">
+            <span
+              className="flex h-9 w-9 shrink-0 items-center justify-center bg-white"
+              style={{ clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)" }}
+            >
+              <Image src="/logo-icon.png" alt="" width={32} height={26} className="h-7 w-auto" unoptimized />
+            </span>
+            <span className="font-nano-logo text-2xl text-white">nanopower</span>
           </p>
           <p className="text-sm text-nano-slate">
             Materiali edili nanotecnologici e chimica avanzata per costruire e ristrutturare

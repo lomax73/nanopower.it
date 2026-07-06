@@ -18,6 +18,7 @@
   --color-nano-white: var(--nano-white);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-plex-mono);
+  --font-nano-logo: var(--font-nano-logo);
 }
 
 html {

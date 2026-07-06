@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const PRODOTTI = [
@@ -45,8 +46,14 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="font-mono text-xl font-black tracking-tight text-white">
-          nanopower<span className="text-nano-teal">.</span>
+        <Link href="/" className="flex items-center gap-2.5">
+          <span
+            className="flex h-9 w-9 shrink-0 items-center justify-center bg-white"
+            style={{ clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)" }}
+          >
+            <Image src="/logo-icon.png" alt="" width={32} height={26} className="h-7 w-auto" unoptimized priority />
+          </span>
+          <span className="font-nano-logo text-2xl text-white">nanopower</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
