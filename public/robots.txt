@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /area-tecnici
+
+Sitemap: https://nanopower.it/sitemap.xml

@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,7 +22,7 @@ const siteUrl = "https://nanopower.it";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "nanopower.it — Materiali Edili Nanotecnologici | Coming Soon",
+  title: "nanopower.it — Materiali Edili Nanotecnologici",
   description:
     "IGK2, SuperFluid e SuperElastiK: materiali edili ad alte prestazioni. Isolamento termico nanotecnologico, massetti con garanzia 10 anni, membrane elastiche EN 14891.",
   openGraph: {
@@ -50,7 +54,13 @@ export default function RootLayout({
   return (
     <html lang="it" className={`${inter.variable} ${plexMono.variable} h-full`}>
       <body className="min-h-full bg-nano-navy font-sans antialiased">
-        {children}
+        <GoogleAnalytics />
+        <div className="relative flex min-h-full flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+        <WhatsAppButton />
       </body>
     </html>
   );

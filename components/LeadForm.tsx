@@ -41,7 +41,7 @@ export default function LeadForm() {
           <circle cx="12" cy="12" r="11" stroke="#00A896" strokeWidth="1.5" />
           <path d="M7 12.5 10.2 16 17 8" stroke="#00A896" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <p className="text-white">Perfetto! Ti avvisiamo non appena nanopower.it è online.</p>
+        <p className="text-white">Grazie! Ti ricontatteremo al più presto per la tua consulenza.</p>
       </div>
     );
   }
@@ -49,10 +49,10 @@ export default function LeadForm() {
   return (
     <div className="mx-auto w-full max-w-lg px-6">
       <h2 className="text-center text-xl font-semibold text-white sm:text-2xl">
-        Vuoi essere tra i primi a sapere quando siamo online?
+        Richiedi una consulenza gratuita
       </h2>
       <p className="mt-2 text-center text-sm text-nano-slate">
-        Lascia i tuoi contatti e ti avvisiamo al lancio. Nessuno spam.
+        Lascia i tuoi contatti: un nostro tecnico ti ricontatterà a breve. Nessuno spam.
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="mt-6 flex flex-col gap-4">
@@ -153,7 +153,7 @@ export default function LeadForm() {
           {isSubmitting ? (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-nano-navy/30 border-t-nano-navy" />
           ) : (
-            "Avvisami al lancio →"
+            "Invia richiesta →"
           )}
         </button>
       </form>
